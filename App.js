@@ -1,11 +1,11 @@
 import React from 'react'
 import { View, Text } from 'react-native'
+import HomeScreen from './src/screens/HomeScreen'
+import LoginScreen from './src/screens/LoginScreen'
 
 const App = () => {
   return(
-    <View>
-      <Text>My To-Do Farm</Text>
-    </View>
+    <LoginScreen />
   )
 }
 
