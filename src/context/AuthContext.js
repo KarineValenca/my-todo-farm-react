@@ -1,17 +1,19 @@
 import createDataContext from './createDataContext'
+import api from '../api/api'
 
 const authReducer = (state, action) => {
     switch(action.type) {
-        case 'sigin':
-            return { errorMessage: ''}
+        case 'signin':
+            return { errorMessage: '', token: action.payload}
         default:
             return state
     }
 }
 
-const signin = (dispatch) => async ({ email, password }) => {
+const signin = (dispatch) => async({ email, password }) => {
     try {
-        dispatch({ type: 'signin', payload :' '})
+        const response = await api.post('/signin', { email, password })
+        dispatch({ type: 'signin', payload: response.data.token})
     } catch(err) {
         console.log(err)
     }

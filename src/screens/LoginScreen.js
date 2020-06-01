@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Text, Input, Button } from 'react-native-elements'
+import { Context } from '../context/AuthContext'
 
 const LoginScreen = () => {
+    const { state, signin } = useContext(Context)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     return(
@@ -23,8 +25,7 @@ const LoginScreen = () => {
                 autoCapitalize="none"
                 autoCorrect={false}
             />
-
-            <Button title="Log in" onPress={() => console.log("pressed login button")} />
+            <Button title="Log in" onPress={() => signin({ email, password })} />
         </View>
     )
 }
