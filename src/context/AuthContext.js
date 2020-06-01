@@ -5,6 +5,8 @@ const authReducer = (state, action) => {
     switch(action.type) {
         case 'signin':
             return { errorMessage: '', token: action.payload}
+        case 'add_error':
+            return { ...state, errorMessage: action.payload }
         default:
             return state
     }
@@ -15,7 +17,10 @@ const signin = (dispatch) => async({ email, password }) => {
         const response = await api.post('/signin', { email, password })
         dispatch({ type: 'signin', payload: response.data.token})
     } catch(err) {
-        console.log(err)
+        dispatch({
+            type: 'add_error',
+            payload: 'Wrong email or password'
+        })
     }
 }
 
