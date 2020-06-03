@@ -1,11 +1,11 @@
 import React from 'react'
 import useResults from '../hooks/useResult'
-import { View } from 'react-native'
-import { Text, Header } from 'react-native-elements'
+import { View, FlatList } from 'react-native'
+import { Text, Header, ListItem } from 'react-native-elements'
+import ListTodoItem from '../components/ListTodoItem'
 
 const TodoScreen = () => {
     const [showUserTodos, todos, errorMessage] = useResults()
-    console.log(todos)
     return(
         <View>
             <Header 
@@ -25,7 +25,16 @@ const TodoScreen = () => {
                 }}
                 
             />
-            <Text> My To-Do List</Text>
+            
+            <FlatList 
+                data={todos}
+                keyExtractor={todo => todos._id}
+                renderItem={ ({item}) => {
+                    return(
+                        <ListTodoItem todo={item} />
+                    ) 
+                }}
+            />
         </View>
     )
 }
