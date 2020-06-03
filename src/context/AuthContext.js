@@ -1,5 +1,6 @@
 import createDataContext from './createDataContext'
 import api from '../api/api'
+import { navigate } from '../navigateRef'
 
 const authReducer = (state, action) => {
     switch(action.type) {
@@ -16,6 +17,7 @@ const signin = (dispatch) => async({ email, password }) => {
     try {
         const response = await api.post('/signin', { email, password })
         dispatch({ type: 'signin', payload: response.data.token})
+        navigate('Todo')
     } catch(err) {
         dispatch({
             type: 'add_error',

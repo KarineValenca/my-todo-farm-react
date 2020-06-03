@@ -5,7 +5,6 @@ import { Context } from '../context/AuthContext'
 
 const LoginScreen = () => {
     const { state, signin } = useContext(Context)
-    console.log(state.errorMessage)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     return(
@@ -26,7 +25,6 @@ const LoginScreen = () => {
                 autoCapitalize="none"
                 autoCorrect={false}
             />
-            {console.log(state.errorMessage)}
             {state.errorMessage ? <Text style={styles.errorMessage}>{state.errorMessage}</Text> : null }
             <Button title="Log in" onPress={() => signin({ email, password })} />
         </View>
@@ -45,5 +43,11 @@ const styles = StyleSheet.create({
     },
 
 })
+
+LoginScreen.navigationOptions = () => {
+    return {
+        headerShown: false,
+    }
+}
 
 export default LoginScreen
