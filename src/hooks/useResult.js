@@ -12,7 +12,6 @@ export default() => {
     const showUserTodos = async() => {
         try{
             const response = await api.get(`/todos/${userId}`)
-            console.log(response)
             setTodos(response.data)
         } catch(err) {
             setErrorMessage("Something went wrong, try again later")

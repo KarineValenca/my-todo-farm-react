@@ -6,6 +6,7 @@ import ListTodoItem from '../components/ListTodoItem'
 
 const TodoScreen = () => {
     const [showUserTodos, todos, errorMessage] = useResults()
+    console.log(todos)
     return(
         <View>
             <Header 
@@ -28,12 +29,12 @@ const TodoScreen = () => {
             
             <FlatList 
                 data={todos}
-                keyExtractor={todo => todos._id}
                 renderItem={ ({item}) => {
                     return(
                         <ListTodoItem todo={item} />
                     ) 
                 }}
+                keyExtractor={todo => todo._id}
             />
         </View>
     )

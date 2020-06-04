@@ -1,12 +1,13 @@
 import React from 'react'
-import { ListItem } from 'react-native-elements'
+import { ListItem, CheckBox } from 'react-native-elements'
 
 const ListTodoItem = ({ todo }) => {
     return (
         <ListItem
-            title={todo}
+            title={todo.title}
             bottomDivider
-            chevron={{ color: 'red' }}
+            checkBox
+            disabled={todo.isDone}
         />
     )
 }
