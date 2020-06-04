@@ -6,7 +6,6 @@ import ListTodoItem from '../components/ListTodoItem'
 
 const TodoScreen = () => {
     const [showUserTodos, todos, errorMessage] = useResults()
-    console.log(todos)
     return(
         <View>
             <Header 
