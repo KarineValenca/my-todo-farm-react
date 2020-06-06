@@ -1,16 +1,19 @@
 import React from 'react'
-import { ListItem, CheckBox } from 'react-native-elements'
-import { View, Text } from 'react-native'
+import { ListItem } from 'react-native-elements'
+import useTodoStatus from '../hooks/useTodoStatus'
 
 const ListTodoItem = ({ todo }) => {
+    const [ changeTodoStatus, setIsClicked, todoStatus ] = useTodoStatus(todo)
+
     return (
         <ListItem
             title={todo.title}
             bottomDivider
-            disabled={todo.isDone}
+            disabled={false}
+            disabledStyle={{title: {color: 'grey'}}}
             checkBox={{ 
-                checked: false,
-                onPress: () => {console.log("teste")}
+                checked: todoStatus,
+                onPress: () => {setIsClicked(true)}
             }}
         />
     )

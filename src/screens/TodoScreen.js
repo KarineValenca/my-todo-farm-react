@@ -1,7 +1,8 @@
 import React from 'react'
 import useResults from '../hooks/useResult'
+
 import { View, FlatList } from 'react-native'
-import { Text, Header, ListItem } from 'react-native-elements'
+import { Header } from 'react-native-elements'
 import ListTodoItem from '../components/ListTodoItem'
 
 const TodoScreen = () => {
@@ -30,7 +31,9 @@ const TodoScreen = () => {
                 data={todos}
                 renderItem={ ({item}) => {
                     return(
-                        <ListTodoItem todo={item} />
+                        <ListTodoItem 
+                            todo={item} 
+                        />
                     ) 
                 }}
                 keyExtractor={todo => todo._id}
