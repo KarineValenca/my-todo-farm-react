@@ -1,9 +1,9 @@
 import React from 'react'
 import useResults from '../hooks/useResult'
-
 import { View, FlatList } from 'react-native'
 import { Header } from 'react-native-elements'
 import ListTodoItem from '../components/ListTodoItem'
+import ButtonHeader from '../components/ButtonHeader'
 
 const TodoScreen = () => {
     const [showUserTodos, todos, errorMessage] = useResults()
@@ -18,6 +18,10 @@ const TodoScreen = () => {
                         fontWeight: 'bold'
                     } 
                 }}
+                rightComponent={
+                    <ButtonHeader icon="plus" size={20} onClick={() => console.log("teste")}/>
+                    
+                }
                 containerStyle={{
                     justifyContent: 'space-around',
                 }}
