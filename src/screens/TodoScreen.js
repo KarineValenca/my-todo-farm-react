@@ -15,10 +15,10 @@ const TodoScreen = ({ navigation }) => {
     
     useEffect(() => {
         showTodos(userId)
-    }, [])
+    }, [todos])
     //const [showUserTodos, todos, errorMessage] = useResults()
     return(
-        <View>
+        <View style={{ flex: 1 }}>
             <Header 
                 centerComponent={{ 
                     text: 'My To-Do List', 
