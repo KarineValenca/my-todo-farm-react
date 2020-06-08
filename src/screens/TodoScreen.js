@@ -5,7 +5,7 @@ import { Header } from 'react-native-elements'
 import ListTodoItem from '../components/ListTodoItem'
 import ButtonHeader from '../components/ButtonHeader'
 
-const TodoScreen = () => {
+const TodoScreen = ({ navigation }) => {
     const [showUserTodos, todos, errorMessage] = useResults()
     return(
         <View>
@@ -19,7 +19,11 @@ const TodoScreen = () => {
                     } 
                 }}
                 rightComponent={
-                    <ButtonHeader icon="plus" size={20} onClick={() => console.log("teste")}/>
+                    <ButtonHeader 
+                        icon="plus" 
+                        size={20} 
+                        onClick={() => navigation.navigate('TodoCreate')}
+                    />
                     
                 }
                 containerStyle={{

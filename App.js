@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import HomeScreen from './src/screens/HomeScreen'
 import LoginScreen from './src/screens/LoginScreen'
 import TodoScreen from './src/screens/TodoScreen'
+import TodoCreateScreen from './src/screens/CreateTodoScreen'
 import { Provider as AuthProvider } from './src/context/AuthContext'
 import { setNavigator } from './src/navigateRef'
 
@@ -15,6 +16,7 @@ const App = () => {
       }),
       mainFlow: createStackNavigator({
         Todo: TodoScreen,
+        TodoCreate: TodoCreateScreen,
       })
     }, {
       initialRouteName: 'loginFlow'
