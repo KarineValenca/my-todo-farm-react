@@ -6,6 +6,7 @@ import LoginScreen from './src/screens/LoginScreen'
 import TodoScreen from './src/screens/TodoScreen'
 import TodoCreateScreen from './src/screens/CreateTodoScreen'
 import { Provider as AuthProvider } from './src/context/AuthContext'
+import { Provider as TodoProvider } from './src/context/TodoContext'
 import { setNavigator } from './src/navigateRef'
 
 const App = () => {
@@ -24,9 +25,13 @@ const App = () => {
   )
   const App = createAppContainer(switchNavigator)
   return(
-    <AuthProvider>
-      <App ref={ (navigator) => { setNavigator(navigator) }} />
-    </AuthProvider>
+    
+      <AuthProvider>
+        <TodoProvider>
+        <App ref={ (navigator) => { setNavigator(navigator) }} />
+        </TodoProvider>
+      </AuthProvider>
+    
   )
 }
 

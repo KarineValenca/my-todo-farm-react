@@ -6,7 +6,6 @@ export default() => {
     const { state } = useContext(Context)
     const [todos, setTodos] = useState([])
     const [errorMessage, setErrorMessage] = useState('')
-
     const userId = state.user._id
     
     const showUserTodos = async() => {

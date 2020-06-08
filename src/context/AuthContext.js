@@ -29,5 +29,5 @@ const signin = (dispatch) => async({ email, password }) => {
 export const { Provider, Context } = createDataContext(
     authReducer,
     { signin },
-    { user: null, user: null, errorMessage: ''}
+    { token: null, user: null, errorMessage: ''}
 )

@@ -1,12 +1,22 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import useResults from '../hooks/useResult'
 import { View, FlatList } from 'react-native'
 import { Header } from 'react-native-elements'
 import ListTodoItem from '../components/ListTodoItem'
 import ButtonHeader from '../components/ButtonHeader'
+import { Context as TodoContext } from '../context/TodoContext'
+import { Context as AuthContext } from '../context/AuthContext'
 
 const TodoScreen = ({ navigation }) => {
-    const [showUserTodos, todos, errorMessage] = useResults()
+    const { state } = useContext(AuthContext)
+    
+    const userId = state.user._id
+    const { state: {todos}, showTodos } = useContext(TodoContext)
+    
+    useEffect(() => {
+        showTodos(userId)
+    }, [])
+    //const [showUserTodos, todos, errorMessage] = useResults()
     return(
         <View>
             <Header 
