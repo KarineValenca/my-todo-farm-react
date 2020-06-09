@@ -7,6 +7,7 @@ const ListTodoItem = ({ todo }) => {
     return (
         <ListItem
             title={todo.title}
+            subtitle={todo.category}
             titleStyle={styles}
             bottomDivider
             checkBox={
