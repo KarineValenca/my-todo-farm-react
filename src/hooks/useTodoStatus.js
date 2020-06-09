@@ -34,7 +34,6 @@ export default(props) => {
     }
 
     const setInicialCheckboxProps = () => {
-        console.log(todoStatus)
         if(todoStatus){
             setCheckboxProps({
                 checked: true,

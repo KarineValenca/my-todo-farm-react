@@ -7,7 +7,7 @@ const todoReducer = (state, action) => {
         case 'show_todos': 
             return { todos: action.payload, errorMessage: ''}
         case 'create_todo':
-            return { todos: action.payload, errorMessage: ''}
+            return { todo: action.payload, errorMessage: ''}
         case 'add_error':
             return { ...state, errorMessage: action.payload }
         default:
@@ -36,7 +36,7 @@ const createTodo = (dispatch) => async(userId, title, category) => {
     }catch(err) {
         dispatch({
             type: 'add_error',
-            payload: 'Could not create todo, try again later.'
+            payload: 'You must provide a title and a category'
         })
     }
 }
@@ -44,5 +44,5 @@ const createTodo = (dispatch) => async(userId, title, category) => {
 export const { Provider, Context } = createDataContext(
     todoReducer,
     { showTodos, createTodo },
-    { todos: [], errorMessage: ''}
+    { todos: [], todo: {}, errorMessage: ''}
 )

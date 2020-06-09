@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react'
-import useResults from '../hooks/useResult'
 import { View, FlatList } from 'react-native'
 import { Header } from 'react-native-elements'
 import ListTodoItem from '../components/ListTodoItem'
@@ -11,12 +10,14 @@ const TodoScreen = ({ navigation }) => {
     const { state } = useContext(AuthContext)
     
     const userId = state.user._id
-    const { state: {todos}, showTodos } = useContext(TodoContext)
+    const { state: { todos, todo }, showTodos } = useContext(TodoContext)
+    
     
     useEffect(() => {
         showTodos(userId)
-    }, [todos])
-    //const [showUserTodos, todos, errorMessage] = useResults()
+    }, [todo])
+
+    
     return(
         <View style={{ flex: 1 }}>
             <Header 
