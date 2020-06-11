@@ -8,10 +8,9 @@ import { Context as AuthContext } from '../context/AuthContext'
 
 const TodoScreen = ({ navigation }) => {
     const { state } = useContext(AuthContext)
-    
     const userId = state.user._id
+
     const { state: { todos, todo }, showTodos } = useContext(TodoContext)
-    
     
     useEffect(() => {
         showTodos(userId)

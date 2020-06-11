@@ -1,8 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import api from '../api/api'
-import { grey } from 'color-name'
+import { Context as TodoContext } from '../context/TodoContext'
+import { Context as AuthContext } from '../context/AuthContext'
 
 export default(props) => {
+    const { state } = useContext(AuthContext)
+    const userId = state.user._id
+
+    const { showTodos } = useContext(TodoContext)
+
     const todoId = props._id
     const [isClicked, setIsClicked] = useState(false)
     const [todoStatus, setTodoStatus] = useState(props.isDone)
@@ -17,6 +23,7 @@ export default(props) => {
             setInitialStyle()
             setInicialCheckboxProps()
             setIsClicked(false)
+            showTodos(userId)
         }catch(err){
             setErrorMessage("Something went wrong, try again later")
         }

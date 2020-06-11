@@ -6,7 +6,6 @@ import useSeeds from '../hooks/useSeeds'
 
 const FarmScreen = () => {
     const [showUserSeeds, seeds, errorMessage] = useSeeds()
-    console.log(seeds)
     return(
         <View>
             <Header 
@@ -28,7 +27,7 @@ const FarmScreen = () => {
                 
             />
         
-            <Card containerStyle={{ borderRadius: 5 }} title="SEEDS">
+            <Card containerStyle={{ borderRadius: 5 }} title="Seeds" titleStyle={{ fontSize: 22 }}>
                 <View style={styles.seedItemStyle}>
                     { seeds.map((l, i) => (
                         <SeedCard 
