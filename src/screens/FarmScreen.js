@@ -1,9 +1,12 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import { Header, Card, Image } from 'react-native-elements'
+import { View, StyleSheet } from 'react-native'
+import { Header, Card } from 'react-native-elements'
 import SeedCard from '../components/SeedCard'
+import useSeeds from '../hooks/useSeeds'
 
 const FarmScreen = () => {
+    const [showUserSeeds, seeds, errorMessage] = useSeeds()
+    console.log(seeds)
     return(
         <View>
             <Header 
@@ -27,9 +30,14 @@ const FarmScreen = () => {
         
             <Card containerStyle={{ borderRadius: 5 }} title="SEEDS">
                 <View style={styles.seedItemStyle}>
-                    <SeedCard image='image' name='Wheat' quantity='3'/>
-                    <SeedCard image='image' name='Rose' quantity='3'/>
-                    <SeedCard image='image' name='Rice' quantity='3'/>
+                    { seeds.map((l, i) => (
+                        <SeedCard 
+                            key={i}
+                            image='image'
+                            name={l.name}
+                            quantity={l.quantity}
+                        />
+                    ))}
                 </View>
             </Card>
         </View>
@@ -39,7 +47,7 @@ const FarmScreen = () => {
 const styles = StyleSheet.create({
     seedItemStyle: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-around'
     }
 })
 
