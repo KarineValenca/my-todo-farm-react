@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useContext } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Header, Card } from 'react-native-elements'
 import SeedCard from '../components/SeedCard'
@@ -6,6 +6,7 @@ import useSeeds from '../hooks/useSeeds'
 
 const FarmScreen = () => {
     const [showUserSeeds, seeds, errorMessage] = useSeeds()
+    
     return(
         <View>
             <Header 

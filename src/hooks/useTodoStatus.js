@@ -7,7 +7,7 @@ export default(props) => {
     const { state } = useContext(AuthContext)
     const userId = state.user._id
 
-    const { showTodos } = useContext(TodoContext)
+    const { showTodos, updateTodoStatus } = useContext(TodoContext)
 
     const todoId = props._id
     const [isClicked, setIsClicked] = useState(false)
@@ -18,7 +18,7 @@ export default(props) => {
 
     const changeTodoStatus = async() => {
         try{
-            const response = await api.put(`/change-todo-status/${todoId}`)
+            updateTodoStatus(todoId)
             setTodoStatus(response.data.isDone)
             setInitialStyle()
             setInicialCheckboxProps()

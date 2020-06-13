@@ -5,9 +5,11 @@ import { navigate } from '../navigateRef'
 const todoReducer = (state, action) => {
     switch(action.type){
         case 'show_todos': 
-            return { todos: action.payload, errorMessage: ''}
+            return { todos: action.payload, errorMessage: '' }
         case 'create_todo':
-            return { todo: action.payload, errorMessage: ''}
+            return { todo: action.payload, errorMessage: '' }
+        case 'update_todo_status':
+            return { todo: action.payload, errorMessage: '' }
         case 'add_error':
             return { ...state, errorMessage: action.payload }
         default:
@@ -41,8 +43,20 @@ const createTodo = (dispatch) => async(userId, title, category) => {
     }
 }
 
+const updateTodoStatus = (dispatch) => async(todoId) => {
+    try{
+        const response = await api.put(`/change-todo-status/${todoId}`)
+        dispatch({ type: 'update_todo_status', payload: response.data })
+    }catch(err){
+        dispatch({
+            type: 'add_error',
+            payload: 'Cannot update todo, try again later'
+        })
+    }
+}
+
 export const { Provider, Context } = createDataContext(
     todoReducer,
-    { showTodos, createTodo },
+    { showTodos, createTodo, updateTodoStatus },
     { todos: [], todo: {}, errorMessage: ''}
 )
