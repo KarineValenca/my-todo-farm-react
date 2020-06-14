@@ -29,8 +29,7 @@ const CreateTodoScreen = ({ navigation }) => {
                         icon="arrow-left" 
                         size={20} 
                         onClick={() => navigation.navigate('Todo')}
-                    />
-                    
+                    /> 
                 }
             />
             <Input 

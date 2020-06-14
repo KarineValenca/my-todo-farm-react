@@ -1,13 +1,13 @@
-import React, { useEffect, useContext } from 'react'
+import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import { Header, Card } from 'react-native-elements'
+import { Header, Card, Button } from 'react-native-elements'
 import SeedCard from '../components/SeedCard'
 import PlantCard from '../components/PlantCard'
 import useSeeds from '../hooks/useSeeds'
 import useShowPlants from '../hooks/useShowPlants'
 
-const FarmScreen = () => {
-    const [showUserSeeds, seeds, errorMessage] = useSeeds()
+const FarmScreen = ({ navigation }) => {
+    const [showUserSeeds, seeds] = useSeeds()
     const [showUserPlants, plants] = useShowPlants()
 
     return(
@@ -50,11 +50,16 @@ const FarmScreen = () => {
                         <PlantCard 
                             key={i}
                             image='image'
-                            name={l.name}
-                            quantity={l.quantity}
+                            seed={l.seed}
+                            age={l.age}
+                            status={l.status}
                         />
                     ))}
                 </View>
+                <Button 
+                    title="Plant!"
+                    onPress={() => navigation.navigate('PlantCreate')}
+                />
             </Card>
         </View>
     )

@@ -7,6 +7,7 @@ import LoginScreen from './src/screens/LoginScreen'
 import TodoScreen from './src/screens/TodoScreen'
 import TodoCreateScreen from './src/screens/CreateTodoScreen'
 import FarmScreen from './src/screens/FarmScreen'
+import PlantCreateScreen from './src/screens/CreatePlantScreen'
 import { Provider as AuthProvider } from './src/context/AuthContext'
 import { Provider as TodoProvider } from './src/context/TodoContext'
 import { setNavigator } from './src/navigateRef'
@@ -23,6 +24,7 @@ todoFlow.navigationOptions = {
 
 const farmFlow = createSwitchNavigator({
   Farm: FarmScreen,
+  PlantCreate: PlantCreateScreen
 })
 farmFlow.navigationOptions = {
   title: 'My Farm',
