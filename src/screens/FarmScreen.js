@@ -1,10 +1,11 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import { Header, Card, Button } from 'react-native-elements'
+import { Card, Button } from 'react-native-elements'
 import SeedCard from '../components/SeedCard'
 import PlantCard from '../components/PlantCard'
 import useSeeds from '../hooks/useSeeds'
 import useShowPlants from '../hooks/useShowPlants'
+import CustomHeader from '../components/CustomHeader'
 
 const FarmScreen = ({ navigation }) => {
     const [showUserSeeds, seeds] = useSeeds()
@@ -12,23 +13,8 @@ const FarmScreen = ({ navigation }) => {
 
     return(
         <View style={{ flex: 1 }}>
-            <Header 
-                centerComponent={{ 
-                    text: 'My Farm', 
-                    style: { 
-                        color: '#fff',
-                        fontSize: 24,
-                        fontWeight: 'bold'
-                    } 
-                }}
-                
-                containerStyle={{
-                    justifyContent: 'space-around',
-                }}
-                statusBarProps={{
-                    translucent: true,
-                }}
-                
+            <CustomHeader 
+                title={"My Farm"}
             />
         
             <Card containerStyle={{ borderRadius: 5 }} title="Seeds" titleStyle={{ fontSize: 22 }}>

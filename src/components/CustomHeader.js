@@ -2,7 +2,7 @@ import React from 'react'
 import { Header } from 'react-native-elements'
 import ButtonHeader from './ButtonHeader'
 
-const CustomHeader = ({ title, leftIcon, leftOnClick }) => {
+const CustomHeader = ({ title, leftIcon, leftOnClick, rightIcon, rightOnClick }) => {
     return(
         <Header 
         centerComponent={{ 
@@ -25,6 +25,13 @@ const CustomHeader = ({ title, leftIcon, leftOnClick }) => {
                 size={20} 
                 onClick={leftOnClick}
             /> 
+        }
+        rightComponent={
+            <ButtonHeader 
+                icon={rightIcon}
+                size={20} 
+                onClick={rightOnClick}
+            />
         }
         />
     )

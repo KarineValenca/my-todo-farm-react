@@ -1,10 +1,9 @@
 import React, { useContext, useEffect } from 'react'
 import { View, FlatList } from 'react-native'
-import { Header } from 'react-native-elements'
 import ListTodoItem from '../components/ListTodoItem'
-import ButtonHeader from '../components/ButtonHeader'
 import { Context as TodoContext } from '../context/TodoContext'
 import { Context as AuthContext } from '../context/AuthContext'
+import CustomHeader from '../components/CustomHeader'
 
 const TodoScreen = ({ navigation }) => {
     const { state } = useContext(AuthContext)
@@ -19,30 +18,10 @@ const TodoScreen = ({ navigation }) => {
     
     return(
         <View style={{ flex: 1 }}>
-            <Header 
-                centerComponent={{ 
-                    text: 'My To-Do List', 
-                    style: { 
-                        color: '#fff',
-                        fontSize: 24,
-                        fontWeight: 'bold'
-                    } 
-                }}
-                rightComponent={
-                    <ButtonHeader 
-                        icon="plus" 
-                        size={20} 
-                        onClick={() => navigation.navigate('TodoCreate')}
-                    />
-                    
-                }
-                containerStyle={{
-                    justifyContent: 'space-around',
-                }}
-                statusBarProps={{
-                    translucent: true,
-                }}
-                
+            <CustomHeader 
+                title={"My To-Do List"} 
+                rightIcon={"plus"} 
+                rightOnClick={() => navigation.navigate('TodoCreate')}
             />
             
             <FlatList 

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { Header, Input, Button } from 'react-native-elements'
-import ButtonHeader from '../components/ButtonHeader'
+import CustomHeader from '../components/CustomHeader'
 import { Context as TodoContext} from '../context/TodoContext'
 import { Context as AuthContext } from '../context/AuthContext'
 
@@ -15,23 +15,12 @@ const CreateTodoScreen = ({ navigation }) => {
 
     return(
         <View>
-            <Header 
-                centerComponent={{ 
-                    text: 'Create New To-Do', 
-                    style: { 
-                        color: '#fff',
-                        fontSize: 24,
-                        fontWeight: 'bold'
-                    } 
-                }}
-                leftComponent={
-                    <ButtonHeader 
-                        icon="arrow-left" 
-                        size={20} 
-                        onClick={() => navigation.navigate('Todo')}
-                    /> 
-                }
+            <CustomHeader 
+                title={"Create New To-Do"} 
+                leftIcon={"arrow-left"} 
+                leftOnClick={() => navigation.navigate('Todo')}
             />
+           
             <Input 
                 label="Title"
                 placeholder="To-Do Title"
