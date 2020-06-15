@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Card } from 'react-native-elements'
 import SeedCard from '../components/SeedCard'
@@ -8,6 +8,12 @@ import useSeeds from '../hooks/useSeeds'
 
 const CreatePlantScreen = ({ navigation }) => {
     const [showUserSeeds, seeds] = useSeeds()
+    const [selectedSeed, setSelectedSeed] = useState('')
+
+    const selectSeed = (name) => {
+        setSelectedSeed(name)
+    }
+
     return(
         <View>
             <CustomHeader 
@@ -24,6 +30,8 @@ const CreatePlantScreen = ({ navigation }) => {
                             image='image'
                             name={l.name}
                             quantity={l.quantity}
+                            onClick={() => selectSeed(l.name)}
+                            selectedSeed={selectedSeed}
                         />
                     ))}
                 </View>
