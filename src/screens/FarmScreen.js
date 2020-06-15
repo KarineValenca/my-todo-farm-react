@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Card, Button } from 'react-native-elements'
 import SeedCard from '../components/SeedCard'
@@ -10,6 +10,10 @@ import CustomHeader from '../components/CustomHeader'
 const FarmScreen = ({ navigation }) => {
     const [showUserSeeds, seeds] = useSeeds()
     const [showUserPlants, plants] = useShowPlants()
+
+    useEffect(() => {
+        showUserPlants()
+    }, [])
 
     return(
         <View style={{ flex: 1 }}>
@@ -25,6 +29,7 @@ const FarmScreen = ({ navigation }) => {
                             image='image'
                             name={l.name}
                             quantity={l.quantity}
+                            activeOpacity={1}
                         />
                     ))}
                 </View>

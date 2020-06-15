@@ -12,7 +12,6 @@ export default() => {
     const createTodo = async(title, category) => {
         try {
             const response = await api.post(`/todos/${userId}`, { title, category })
-            console.log(response.data)
             setTodo(response.data)
             navigate('Todo')
         }catch(err) {

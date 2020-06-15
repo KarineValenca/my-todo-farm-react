@@ -1,17 +1,21 @@
 import React, { useState } from 'react'
 import { View, StyleSheet } from 'react-native'
-import { Card } from 'react-native-elements'
+import { Card, Button } from 'react-native-elements'
 import SeedCard from '../components/SeedCard'
 import CustomHeader from '../components/CustomHeader'
 
+import usePlantSeed from '../hooks/usePlantSeed'
 import useSeeds from '../hooks/useSeeds'
 
 const CreatePlantScreen = ({ navigation }) => {
     const [showUserSeeds, seeds] = useSeeds()
+    const [plantSeed, plant] = usePlantSeed()
+    
     const [selectedSeed, setSelectedSeed] = useState('')
+    console.log("console", selectedSeed)
 
-    const selectSeed = (name) => {
-        setSelectedSeed(name)
+    const selectSeed = (seedId) => {
+        setSelectedSeed(seedId)
     }
 
     return(
@@ -30,11 +34,18 @@ const CreatePlantScreen = ({ navigation }) => {
                             image='image'
                             name={l.name}
                             quantity={l.quantity}
-                            onClick={() => selectSeed(l.name)}
+                            onClick={() => selectSeed(l._id)}
                             selectedSeed={selectedSeed}
+                            seedId={l._id}
                         />
                     ))}
                 </View>
+                <Button 
+                    title="Plant" 
+                    buttonStyle={{ marginTop: 15 }}
+                    onPress={() => plantSeed(selectedSeed)}
+                    disabled={selectedSeed == ''}
+                />
             </Card>
         </View>
     )
