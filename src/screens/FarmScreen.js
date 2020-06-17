@@ -6,6 +6,7 @@ import PlantCard from '../components/PlantCard'
 import useSeeds from '../hooks/useSeeds'
 import useShowPlants from '../hooks/useShowPlants'
 import CustomHeader from '../components/CustomHeader'
+import { FlatList } from 'react-native-gesture-handler'
 
 const FarmScreen = ({ navigation }) => {
     const [showUserSeeds, seeds] = useSeeds()
@@ -37,15 +38,22 @@ const FarmScreen = ({ navigation }) => {
 
             <Card containerStyle={{ borderRadius: 5 }} title="Plants" titleStyle={{ fontSize: 22 }}>
                 <View style={styles.cardItemStyle}>
-                    { plants.map((l, i) => (
-                        <PlantCard 
-                            key={i}
-                            image='image'
-                            seed={l.seed}
-                            age={l.age}
-                            status={l.status}
-                        />
-                    ))}
+                    <FlatList 
+                        data={plants}
+                        keyExtractor={(plant) => plant._id}
+                        renderItem={({ item }) => {
+                            return(
+                                <PlantCard 
+                                    //key={i}
+                                    image='image'
+                                    //seed={l.seed._id}
+                                    seed='teste'
+                                    plant={item}
+                                />
+                            )
+                        }}
+                        numColumns={3}
+                    />
                 </View>
                 <Button 
                     title="Plant!"

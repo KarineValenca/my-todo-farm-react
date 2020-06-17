@@ -9,7 +9,7 @@ export default() => {
 
     const showUserPlants = async() => {
         try{
-            const response = api.get(`/plants/${userId}`)
+            const response = await api.get(`/plants/${userId}`)
             if(response.data != undefined) {
                 setPlants(response.data)
             }else{
