@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import HomeScreen from './src/screens/HomeScreen'
 import LoginScreen from './src/screens/LoginScreen'
+import SignUpScreen from './src/screens/SignUpScreen'
 import TodoScreen from './src/screens/TodoScreen'
 import TodoCreateScreen from './src/screens/CreateTodoScreen'
 import FarmScreen from './src/screens/FarmScreen'
@@ -36,6 +37,7 @@ const App = () => {
     {
       loginFlow: createStackNavigator({
         Login: LoginScreen,
+        SignUp: SignUpScreen,
       }),
       mainFlow: createBottomTabNavigator({
         todoFlow,

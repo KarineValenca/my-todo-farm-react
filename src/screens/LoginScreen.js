@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Text, Input, Button } from 'react-native-elements'
 import { Context } from '../context/AuthContext'
+import { navigate } from '../navigateRef'
 
 const LoginScreen = () => {
     const { state, signin } = useContext(Context)
@@ -27,6 +28,7 @@ const LoginScreen = () => {
             />
             {state.errorMessage ? <Text style={styles.errorMessage}>{state.errorMessage}</Text> : null }
             <Button title="Log in" onPress={() => signin({ email, password })} />
+            <Button title="SignUp" buttonStyle={{ marginTop: 10 }} type="outline" onPress={() => navigate('SignUp')} />
         </View>
     )
 }
