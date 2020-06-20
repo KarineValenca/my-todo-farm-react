@@ -30,10 +30,8 @@ const FarmScreen = ({ navigation }) => {
                     renderItem={({ item }) => {
                         return(
                             <SeedCard 
-                                //key={i}
                                 image='image'
                                 name={item.name}
-                                //seed={l.seed._id}
                                 quantity={item.quantity}
                                 activeOpacity={1}
                             />
@@ -51,10 +49,8 @@ const FarmScreen = ({ navigation }) => {
                     renderItem={({ item }) => {
                         return(
                             <PlantCard 
-                                //key={i}
                                 image='image'
-                                //seed={l.seed._id}
-                                seed='teste'
+                                seed={item.seedName}
                                 plant={item}
                             />
                         )
