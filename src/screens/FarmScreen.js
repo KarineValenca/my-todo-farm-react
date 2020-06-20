@@ -37,24 +37,23 @@ const FarmScreen = ({ navigation }) => {
             </Card>
 
             <Card containerStyle={{ borderRadius: 5 }} title="Plants" titleStyle={{ fontSize: 22 }}>
-                <View style={styles.cardItemStyle}>
-                    <FlatList 
-                        data={plants}
-                        keyExtractor={(plant) => plant._id}
-                        renderItem={({ item }) => {
-                            return(
-                                <PlantCard 
-                                    //key={i}
-                                    image='image'
-                                    //seed={l.seed._id}
-                                    seed='teste'
-                                    plant={item}
-                                />
-                            )
-                        }}
-                        numColumns={3}
-                    />
-                </View>
+                <FlatList 
+                    contentContainerStyle={ styles.cardItemStyle2 }
+                    data={plants}
+                    keyExtractor={(plant) => plant._id}
+                    renderItem={({ item }) => {
+                        return(
+                            <PlantCard 
+                                //key={i}
+                                image='image'
+                                //seed={l.seed._id}
+                                seed='teste'
+                                plant={item}
+                            />
+                        )
+                    }}
+                    numColumns={2}
+                />
                 <Button 
                     title="Plant!"
                     onPress={() => navigation.navigate('PlantCreate')}
@@ -67,7 +66,13 @@ const FarmScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     cardItemStyle: {
         flexDirection: 'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        backgroundColor: 'green'
+    },
+    cardItemStyle2: {
+        //flexDirection: 'row',
+        justifyContent: 'space-around',
+        backgroundColor: 'green'
     }
 })
 
