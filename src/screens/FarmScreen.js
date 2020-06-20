@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, ScrollView } from 'react-native'
 import { Card, Button } from 'react-native-elements'
 import SeedCard from '../components/SeedCard'
 import PlantCard from '../components/PlantCard'
@@ -17,7 +17,7 @@ const FarmScreen = ({ navigation }) => {
     }, [])
 
     return(
-        <View style={{ flex: 1 }}>
+        <ScrollView style={{ flex: 1 }}>
             <CustomHeader 
                 title={"My Farm"}
             />
@@ -52,14 +52,14 @@ const FarmScreen = ({ navigation }) => {
                             />
                         )
                     }}
-                    numColumns={2}
+                    numColumns={3}
                 />
                 <Button 
                     title="Plant!"
                     onPress={() => navigation.navigate('PlantCreate')}
                 />
             </Card>
-        </View>
+        </ScrollView>
     )
 }
 
@@ -67,12 +67,10 @@ const styles = StyleSheet.create({
     cardItemStyle: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        backgroundColor: 'green'
     },
     cardItemStyle2: {
-        //flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'space-around',
-        backgroundColor: 'green'
     }
 })
 

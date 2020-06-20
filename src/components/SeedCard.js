@@ -31,7 +31,7 @@ const SeedCard = ({ image, name, quantity, onClick, selectedSeed, seedId, active
 const styles = StyleSheet.create({
     cardStyle: {
         borderRadius: 5,
-        margin: 0,
+        margin: 5,
         paddingRight: 10,
         paddingLeft: 10,
         paddingTop: 5,
