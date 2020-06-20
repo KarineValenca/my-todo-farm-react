@@ -23,17 +23,24 @@ const FarmScreen = ({ navigation }) => {
             />
         
             <Card containerStyle={{ borderRadius: 5 }} title="Seeds" titleStyle={{ fontSize: 22 }}>
-                <View style={styles.cardItemStyle}>
-                    { seeds.map((l, i) => (
-                        <SeedCard 
-                            key={i}
-                            image='image'
-                            name={l.name}
-                            quantity={l.quantity}
-                            activeOpacity={1}
-                        />
-                    ))}
-                </View>
+                <FlatList 
+                    contentContainerStyle={ styles.cardItemStyle2 }
+                    data={seeds}
+                    keyExtractor={(seed) => seed._id}
+                    renderItem={({ item }) => {
+                        return(
+                            <SeedCard 
+                                //key={i}
+                                image='image'
+                                name={item.name}
+                                //seed={l.seed._id}
+                                quantity={item.quantity}
+                                activeOpacity={1}
+                            />
+                        )
+                    }}
+                    numColumns={3}
+                />
             </Card>
 
             <Card containerStyle={{ borderRadius: 5 }} title="Plants" titleStyle={{ fontSize: 22 }}>
@@ -57,6 +64,7 @@ const FarmScreen = ({ navigation }) => {
                 <Button 
                     title="Plant!"
                     onPress={() => navigation.navigate('PlantCreate')}
+                    buttonStyle={{ marginTop: 10 }}
                 />
             </Card>
         </ScrollView>
