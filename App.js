@@ -9,6 +9,7 @@ import TodoScreen from './src/screens/TodoScreen'
 import TodoCreateScreen from './src/screens/CreateTodoScreen'
 import FarmScreen from './src/screens/FarmScreen'
 import PlantCreateScreen from './src/screens/CreatePlantScreen'
+import SideMenu from'./src/navigation/SideMenu'
 import { Provider as AuthProvider } from './src/context/AuthContext'
 import { Provider as TodoProvider } from './src/context/TodoContext'
 import { setNavigator } from './src/navigateRef'
@@ -32,6 +33,14 @@ farmFlow.navigationOptions = {
   tabBarIcon: <Icon name='seedling' size={20} color='green'/>
 }
 
+const menuNav = createSwitchNavigator({
+  SideMenu: SideMenu
+})
+menuNav.navigationOptions = {
+  title: 'Menu',
+  tabBarIcon: <Icon name='bars' size={20} color='green' />
+}
+
 const App = () => {
   const switchNavigator = createSwitchNavigator(
     {
@@ -42,7 +51,8 @@ const App = () => {
       mainFlow: createBottomTabNavigator({
         todoFlow,
         farmFlow,
-      })
+        menuNav
+      }),
     }, {
       initialRouteName: 'loginFlow'
     }
