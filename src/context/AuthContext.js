@@ -5,9 +5,11 @@ import { navigate } from '../navigateRef'
 const authReducer = (state, action) => {
     switch(action.type) {
         case 'signin':
-            return { errorMessage: '', token: action.payload.token, user: action.payload.user}
+            return { errorMessage: '', token: action.payload.token, user: action.payload.user }
         case 'signup':
-            return { errorMessage: '', token: action.payload.token, user: action.payload.user}
+            return { errorMessage: '', token: action.payload.token, user: action.payload.user }
+        case 'logout':
+            return { errorMessage: '', token: null, user: null }
         case 'add_error':
             return { ...state, errorMessage: action.payload }
         default:
@@ -29,7 +31,6 @@ const signin = (dispatch) => async({ email, password }) => {
 }
 
 const signup = (dispatch) => async({ email, username, password}) => {
-    console.log(email)
     try{
         const responde = await api.post('/signup', { email, password, username })
         dispatch({ type: 'signup', payload: responde.data })
@@ -42,8 +43,13 @@ const signup = (dispatch) => async({ email, username, password}) => {
     }
 }
 
+const logout = (dispatch) => () => {
+    dispatch({ type: 'logout' })
+    navigate('Login')
+}
+
 export const { Provider, Context } = createDataContext(
     authReducer,
-    { signin, signup },
+    { signin, signup, logout },
     { token: null, user: null, errorMessage: ''}
 )
