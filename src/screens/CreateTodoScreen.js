@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import { Header, Input, Button } from 'react-native-elements'
+import React, { useState, useContext, useEffect } from 'react'
+import { View, StyleSheet } from 'react-native'
+import { Input, Text, Button, ButtonGroup } from 'react-native-elements'
 import CustomHeader from '../components/CustomHeader'
 import { Context as TodoContext} from '../context/TodoContext'
 import { Context as AuthContext } from '../context/AuthContext'
@@ -8,10 +8,35 @@ import { Context as AuthContext } from '../context/AuthContext'
 const CreateTodoScreen = ({ navigation }) => {
     const [title, setTitle] = useState('')
     const [category, setCategory] = useState('')
+    const [selectedIndex, setSelectedIndex] = useState('')
     const { state } = useContext(AuthContext)
     
     const userId = state.user._id
     const { state: { errorMessage }, createTodo } = useContext(TodoContext)
+    const options = ['Study', 'Fit', 'Work', 'Hobby']
+
+    const selectCategory = () => {
+        switch (selectedIndex) {
+            case 0:
+                setCategory('Study')
+                break
+            case 1:
+                setCategory('Fit')
+                break
+            case 2:
+                setCategory('Work')
+                break
+            case 3:
+                setCategory('Hobby')
+                break
+            default:
+                break;
+        }
+    }
+
+    useEffect( () => {
+        selectCategory()
+    }, [selectedIndex])
 
     return(
         <View>
@@ -26,10 +51,12 @@ const CreateTodoScreen = ({ navigation }) => {
                 placeholder="To-Do Title"
                 onChangeText={setTitle}
             />
-            <Input 
-                label="Category"
-                placeholder="Category"
-                onChangeText={setCategory}
+            <Text style={styles.textStyle}>Category</Text>
+            <ButtonGroup 
+                onPress={setSelectedIndex}
+                selectedIndex={selectedIndex}
+                buttons={options}
+                containerStyle={{ height: 35 }}
             />
             { errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null }
             <Button 
@@ -48,6 +75,12 @@ const styles = StyleSheet.create({
         color: 'red',
         paddingBottom: 15,
     },
+    textStyle: {
+        color: 'grey', 
+        fontSize: 16, 
+        fontWeight: 'bold', 
+        margin: 10
+    }
 
 })
 
