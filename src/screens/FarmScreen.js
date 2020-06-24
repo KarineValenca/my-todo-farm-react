@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { StyleSheet, ScrollView, FlatList } from 'react-native'
-import { Card, Button } from 'react-native-elements'
+import { Card } from 'react-native-elements'
 import SeedCard from '../components/SeedCard'
 import useSeeds from '../hooks/useSeeds'
 import useShowPlants from '../hooks/useShowPlants'
