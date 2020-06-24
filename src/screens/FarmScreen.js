@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
-import { View, StyleSheet, ScrollView } from 'react-native'
+import { StyleSheet, ScrollView, FlatList } from 'react-native'
 import { Card, Button } from 'react-native-elements'
 import SeedCard from '../components/SeedCard'
-import PlantCard from '../components/PlantCard'
 import useSeeds from '../hooks/useSeeds'
 import useShowPlants from '../hooks/useShowPlants'
 import CustomHeader from '../components/CustomHeader'
-import { FlatList } from 'react-native-gesture-handler'
+import PlantSection from '../components/PlantSection'
 
 const FarmScreen = ({ navigation }) => {
     const [showUserSeeds, seeds] = useSeeds()
@@ -41,28 +40,7 @@ const FarmScreen = ({ navigation }) => {
                 />
             </Card>
 
-            <Card containerStyle={{ borderRadius: 5 }} title="Plants" titleStyle={{ fontSize: 22 }}>
-                <FlatList 
-                    contentContainerStyle={ styles.cardItemStyle2 }
-                    data={plants}
-                    keyExtractor={(plant) => plant._id}
-                    renderItem={({ item }) => {
-                        return(
-                            <PlantCard 
-                                image='image'
-                                seed={item.seedName}
-                                plant={item}
-                            />
-                        )
-                    }}
-                    numColumns={3}
-                />
-                <Button 
-                    title="Plant!"
-                    onPress={() => navigation.navigate('PlantCreate')}
-                    buttonStyle={{ marginTop: 10 }}
-                />
-            </Card>
+            <PlantSection navigation={navigation} plants={plants}/>
         </ScrollView>
     )
 }
