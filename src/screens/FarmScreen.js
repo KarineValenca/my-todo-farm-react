@@ -6,6 +6,7 @@ import useSeeds from '../hooks/useSeeds'
 import useShowPlants from '../hooks/useShowPlants'
 import CustomHeader from '../components/CustomHeader'
 import PlantSection from '../components/PlantSection'
+import useWaterPlant from '../hooks/useWaterPlants'
 
 const FarmScreen = ({ navigation }) => {
     const [showUserSeeds, seeds] = useSeeds()

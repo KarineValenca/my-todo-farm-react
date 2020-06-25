@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Text, Image, Button } from 'react-native-elements'
 import { StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo'
 import useWaterPlant from '../hooks/useWaterPlants'
 
-const PlantCard = ({ plant, seed, image }) => {
-    const [waterPlant] = useWaterPlant()
+const PlantCard = ({ initialPlant, seed, image }) => {
+    const [waterPlant, plant] = useWaterPlant(initialPlant)
+
+    useEffect(() => {
+        
+    }, [plant.status])
 
     const calculateAge = (plantDate) => {
         const oneDay = 24*60*60*1000
@@ -21,7 +25,10 @@ const PlantCard = ({ plant, seed, image }) => {
         waterButton = <Button icon={
             <Icon name={'water'} color={'white'}/>
         }
-        onPress={() => waterPlant(plant._id)}
+        onPress={() => { 
+            waterPlant(plant._id)
+        }}
+        
         />
     }
 

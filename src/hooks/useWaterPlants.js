@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import api from '../api/api'
 
-export default() => {
+export default(initialPlant) => {
 
-    const [plant, setPlant] = useState({})
+    const [plant, setPlant] = useState(initialPlant)
+
     const irrigatePlant = async(plantId) => {
-        console.log(plantId)
         try{
-            const response = api.put('/plants/irrigate', { plant_id: plantId })
+            const response = await api.put('/plants/irrigate', { plant_id: plantId })
             setPlant(response.data)
         }catch(err) {
             console.log(err)

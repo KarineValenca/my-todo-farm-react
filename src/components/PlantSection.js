@@ -15,7 +15,7 @@ const PlantSection = ({ navigation, plants }) => {
                         <PlantCard 
                             image='image'
                             seed={item.seedName}
-                            plant={item}
+                            initialPlant={item}
                         />
                     )
                 }}
