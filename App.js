@@ -21,7 +21,11 @@ const todoFlow = createSwitchNavigator({
 })
 todoFlow.navigationOptions = {
   title: 'My To-Dos',
-  tabBarIcon: <Icon name='list' size={20} color='green'/>
+  tabBarIcon: <Icon name='list' size={20} color='#1B8C11'/>,
+  tabBarOptions: {
+    activeTintColor: '#1B8C11',
+    
+  }
 }
 
 const farmFlow = createSwitchNavigator({
@@ -30,7 +34,10 @@ const farmFlow = createSwitchNavigator({
 })
 farmFlow.navigationOptions = {
   title: 'My Farm',
-  tabBarIcon: <Icon name='seedling' size={20} color='green'/>
+  tabBarIcon: <Icon name='seedling' size={20} color='#1B8C11'/>,
+  tabBarOptions: {
+    activeTintColor: '#1B8C11'
+  }
 }
 
 const menuNav = createSwitchNavigator({
@@ -38,7 +45,10 @@ const menuNav = createSwitchNavigator({
 })
 menuNav.navigationOptions = {
   title: 'Menu',
-  tabBarIcon: <Icon name='bars' size={20} color='green' />
+  tabBarIcon: <Icon name='bars' size={20} color='#1B8C11' />,
+  tabBarOptions: {
+    activeTintColor: '#1B8C11'
+  }
 }
 
 const App = () => {

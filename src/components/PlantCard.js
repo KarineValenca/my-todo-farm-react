@@ -22,12 +22,15 @@ const PlantCard = ({ initialPlant, seed, image }) => {
     const needsWater = plant.status
     let waterButton
     if (needsWater === 'Thirsty') {
-        waterButton = <Button icon={
-            <Icon name={'water'} color={'white'}/>
-        }
-        onPress={() => { 
-            waterPlant(plant._id)
-        }}
+        waterButton = <Button 
+            icon={
+                <Icon name={'water'} color={'#5458CC'} size={13}/>
+            }
+            onPress={() => { 
+                waterPlant(plant._id)
+            }}
+            type="outline"
+            buttonStyle={{ borderWidth: 1, borderColor: '#5458CC' }}
         
         />
     }

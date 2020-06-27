@@ -24,7 +24,7 @@ const PlantSection = ({ navigation, plants }) => {
             <Button 
                 title="Plant!"
                 onPress={() => navigation.navigate('PlantCreate')}
-                buttonStyle={{ marginTop: 10 }}
+                buttonStyle={{ marginTop: 10, backgroundColor: '#5458CC' }}
             />
         </Card>
     )
