@@ -12,7 +12,6 @@ const CreatePlantScreen = ({ navigation }) => {
     const [plantSeed, plant] = usePlantSeed()
     
     const [selectedSeed, setSelectedSeed] = useState('')
-    console.log("console", selectedSeed)
 
     const selectSeed = (seedId) => {
         setSelectedSeed(seedId)
@@ -42,7 +41,7 @@ const CreatePlantScreen = ({ navigation }) => {
                 </View>
                 <Button 
                     title="Plant" 
-                    buttonStyle={{ marginTop: 15 }}
+                    buttonStyle={{ marginTop: 15, backgroundColor: '#5458CC' }}
                     onPress={() => plantSeed(selectedSeed)}
                     disabled={selectedSeed == ''}
                 />

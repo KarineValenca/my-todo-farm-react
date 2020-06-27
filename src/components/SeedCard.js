@@ -39,12 +39,12 @@ const styles = StyleSheet.create({
     },
     selectedCardStyle: {
         borderRadius: 5,
-        margin: 0,
+        margin: 5,
         paddingRight: 10,
         paddingLeft: 10,
         paddingTop: 5,
         paddingBottom: 5,
-        borderColor: 'green'
+        borderColor: '#5458CC'
     }
 })
 export default SeedCard

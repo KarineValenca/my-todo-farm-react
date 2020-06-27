@@ -13,7 +13,13 @@ const SideMenu = ({ navigation }) => {
             <CustomHeader 
                 title={'Menu'} 
             />
-            <Button type='clear'onPress={() => logout()} title='Logout' />
+            <Button 
+                type='outline' 
+                onPress={() => logout()} 
+                title='Logout' 
+                titleStyle={{ color: '#5458CC'}}
+                buttonStyle={{ borderWidth: 2, borderColor: '#5458CC', marginTop: 10 }}
+            />
         </View>
     )
 }

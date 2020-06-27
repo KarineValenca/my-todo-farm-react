@@ -56,12 +56,16 @@ const CreateTodoScreen = ({ navigation }) => {
                 onPress={setSelectedIndex}
                 selectedIndex={selectedIndex}
                 buttons={options}
-                containerStyle={{ height: 35 }}
+                containerStyle={{ height: 35, color: '#5458CC' }}
+                selectedButtonStyle= {styles.selectButtonStyle}
+                selectedTextStyle={{ color: '#5458CC'}}
+                
             />
             { errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null }
             <Button 
                 title="CREATE"
                 onPress={ () => createTodo(userId ,title, category)}
+                buttonStyle={{ backgroundColor: '#5458CC'}}
             />
 
         </View>
@@ -80,6 +84,12 @@ const styles = StyleSheet.create({
         fontSize: 16, 
         fontWeight: 'bold', 
         margin: 10
+    },
+    selectButtonStyle: {
+        backgroundColor: 'white', 
+        borderWidth: 2, 
+        borderColor: '#5458CC', 
+        borderRadius: 1,
     }
 
 })
