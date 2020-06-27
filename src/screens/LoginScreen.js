@@ -27,8 +27,8 @@ const LoginScreen = () => {
                 autoCorrect={false}
             />
             {state.errorMessage ? <Text style={styles.errorMessage}>{state.errorMessage}</Text> : null }
-            <Button title="Log in" onPress={() => signin({ email, password })} />
-            <Button title="SignUp" buttonStyle={{ marginTop: 10 }} type="outline" onPress={() => navigate('SignUp')} />
+            <Button title="Log in" onPress={() => signin({ email, password })} buttonStyle={styles.loginButtonStyle}/>
+            <Button title="SignUp" titleStyle={{ color: '#5458CC'}} buttonStyle={ styles.signupButtonStyle } type="outline" onPress={() => navigate('SignUp')} />
         </View>
     )
 }
@@ -36,6 +36,7 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
     textStyle: {
         textAlign: 'center',
+        color: '#5458CC'
     },
     errorMessage: {
         textAlign: 'center',
@@ -43,6 +44,14 @@ const styles = StyleSheet.create({
         color: 'red',
         paddingBottom: 15,
     },
+    loginButtonStyle: {
+        backgroundColor: '#5458CC'
+    },
+    signupButtonStyle: {
+        marginTop: 5,
+        borderWidth: 1,
+        borderColor: '#5458CC'
+    }
 
 })
 
