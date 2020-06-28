@@ -4,13 +4,13 @@ import ListTodoItem from '../components/ListTodoItem'
 import { Context as TodoContext } from '../context/TodoContext'
 import { Context as AuthContext } from '../context/AuthContext'
 import CustomHeader from '../components/CustomHeader'
-import { navigate } from '../navigateRef'
 
 const TodoScreen = ({ navigation }) => {
     const { state } = useContext(AuthContext)
     const userId = state.user._id
 
     const { state: { todos, todo }, showTodos } = useContext(TodoContext)
+
     
     useEffect(() => {
         showTodos(userId)

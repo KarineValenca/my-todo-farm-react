@@ -45,7 +45,7 @@ const SignUpScreen = () => {
             autoCorrect={false}
         />
         {state.errorMessage ? <Text style={styles.errorMessage}>{state.errorMessage}</Text> : null }
-        <Button title="Sign Up" onPress={() => signup({ email, username, password })} />
+        <Button title="Sign Up" onPress={() => signup({ email, username, password })} buttonStyle={styles.buttonStyle}/>
         </View>
     )
 }
@@ -57,7 +57,9 @@ const styles = StyleSheet.create({
         color: 'red',
         paddingBottom: 15,
     },
-
+    buttonStyle: {
+        backgroundColor: '#5458CC'
+    },
 })
 
 SignUpScreen.navigationOptions = () => {
