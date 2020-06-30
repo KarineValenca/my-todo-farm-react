@@ -1,21 +1,36 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { View, StyleSheet, Animated } from 'react-native'
 import { Text } from 'react-native-elements'
 
 const CustomToast = ({ text }) => {
     const fadeAnim = useRef(new Animated.Value(0)).current
 
-    useEffect(() => {
-        console.log("teste")
+    useState(() => {
+        setTimeout( () => fadeIn(), 500)
+        setTimeout( () => fadeOut(), 5000)
+    }, [])
+    
+    const fadeIn = () => {
+        // Will change fadeAnim value to 1 in 5 seconds
+        console.log("callled fade in")
         Animated.timing(fadeAnim, {
             toValue: 1,
+            duration: 1000,
+            useNativeDriver: true
+            }).start()  
+    }
+    const fadeOut = () => {
+        // Will change fadeAnim value to 1 in 5 seconds
+        console.log("callled fade out")
+        Animated.timing(fadeAnim, {
+            toValue: 0,
             duration: 2000,
             useNativeDriver: true
-        }).start()
-    })
+            }).start()  
+    }
 
     return(
-        <Animated.View style={styles.viewStyle}>
+        <Animated.View style={[styles.viewStyle, {opacity: fadeAnim}]}>
             <Text style={styles.textStyle}>{text}</Text>
         </Animated.View>
     )

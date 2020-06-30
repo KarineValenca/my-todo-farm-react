@@ -1,20 +1,21 @@
-import React, {useContext} from 'react'
-import { View, Text } from 'react-native'
+import React, { useContext } from 'react'
+import { View } from 'react-native'
 import { Button } from 'react-native-elements'
 import CustomHeader from '../components/CustomHeader'
 import { Context as AuthContext } from '../context/AuthContext'
 import CustomToast from '../components/CustomToast'
 
-const SideMenu = ({ navigation }) => {
+const SideMenu = () => {
     const { logout } = useContext(AuthContext)
+  
 
     return (
         
         <View style={{ flex: 1 }}>
-            
             <CustomHeader 
                 title={'Menu'} 
             />
+
             <Button 
                 type='outline' 
                 onPress={() => logout()} 
@@ -24,9 +25,6 @@ const SideMenu = ({ navigation }) => {
             />
             <CustomToast text={'You completed a task'} gravity={50}/>
         </View>
-        
-            
-
     )
 }
 
