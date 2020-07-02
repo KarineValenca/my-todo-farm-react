@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { ListItem } from 'react-native-elements'
-import { ToastAndroid } from 'react-native'
 import useTodoStatus from '../hooks/useTodoStatus'
 
 const ListTodoItem = ({ todo }) => {
     const [ changeTodoStatus, styles, checkboxProps ] = useTodoStatus(todo) 
-
-
+    
     return (
         <ListItem
             title={todo.title}

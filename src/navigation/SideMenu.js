@@ -3,11 +3,10 @@ import { View } from 'react-native'
 import { Button } from 'react-native-elements'
 import CustomHeader from '../components/CustomHeader'
 import { Context as AuthContext } from '../context/AuthContext'
-import CustomToast from '../components/CustomToast'
+
 
 const SideMenu = () => {
     const { logout } = useContext(AuthContext)
-  
 
     return (
         
@@ -23,7 +22,7 @@ const SideMenu = () => {
                 titleStyle={{ color: '#5458CC'}}
                 buttonStyle={{ borderWidth: 2, borderColor: '#5458CC', marginTop: 10 }}
             />
-            <CustomToast text={'You completed a task'} gravity={50}/>
+            
         </View>
     )
 }

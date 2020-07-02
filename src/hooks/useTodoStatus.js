@@ -1,13 +1,8 @@
 import { useEffect, useState, useContext } from 'react'
 import { Context as TodoContext } from '../context/TodoContext'
 import { Context as AuthContext } from '../context/AuthContext'
-import { ToastAndroid } from 'react-native'
 
 export default(props) => {
-    const showToast = () => {
-        ToastAndroid.showWithGravity("You won a seed!", ToastAndroid.SHORT, ToastAndroid.TOP)
-    }
-
     const { state } = useContext(AuthContext)
     const userId = state.user._id
 
@@ -23,7 +18,6 @@ export default(props) => {
     const changeTodoStatus = async() => {
         try{
             updateTodoStatus(todoId)
-            showToast()
             setTodoStatus(response.data.isDone)
             setInitialStyle()
             setInicialCheckboxProps()

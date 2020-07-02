@@ -2,17 +2,15 @@ import React, { useState, useRef } from 'react'
 import { View, StyleSheet, Animated } from 'react-native'
 import { Text } from 'react-native-elements'
 
-const CustomToast = ({ text }) => {
+const CustomToast = ({ navigation, text }) => {
     const fadeAnim = useRef(new Animated.Value(0)).current
 
     useState(() => {
-        setTimeout( () => fadeIn(), 500)
-        setTimeout( () => fadeOut(), 5000)
+        setTimeout( () => fadeIn(), 300)
+        setTimeout( () => fadeOut(), 3500)
     }, [])
     
     const fadeIn = () => {
-        // Will change fadeAnim value to 1 in 5 seconds
-        console.log("callled fade in")
         Animated.timing(fadeAnim, {
             toValue: 1,
             duration: 1000,
@@ -20,8 +18,6 @@ const CustomToast = ({ text }) => {
             }).start()  
     }
     const fadeOut = () => {
-        // Will change fadeAnim value to 1 in 5 seconds
-        console.log("callled fade out")
         Animated.timing(fadeAnim, {
             toValue: 0,
             duration: 2000,
@@ -38,7 +34,8 @@ const CustomToast = ({ text }) => {
 
 const styles = StyleSheet.create({
     viewStyle: {
-        transform: [{ translateY: -50 }],
+        position: 'absolute',
+        transform: [{ translateY: 75 }],
         height: 50,
         width: '80%',
         alignItems: 'center',
