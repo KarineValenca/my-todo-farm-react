@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, FlatList } from 'react-native'
 import { Card, Button } from 'react-native-elements'
 import SeedCard from '../components/SeedCard'
 import CustomHeader from '../components/CustomHeader'
@@ -27,17 +27,24 @@ const CreatePlantScreen = ({ navigation }) => {
             
             <Card containerStyle={{ borderRadius: 5 }} title="Which seed do you like to plant?" titleStyle={{ fontSize: 22 }}>
                 <View style={styles.cardItemStyle}>
-                    { seeds.map((l, i) => (  
-                        <SeedCard 
-                            key={i}
-                            image='image'
-                            name={l.name}
-                            quantity={l.quantity}
-                            onClick={() => selectSeed(l._id)}
-                            selectedSeed={selectedSeed}
-                            seedId={l._id}
-                        />
-                    ))}
+                    <FlatList 
+                        contentContainerStyle={ styles.cardItemStyle }
+                        data={seeds}
+                        keyExtractor={(seed) => seed._id}
+                        renderItem={({ item }) => {
+                            return(
+                                <SeedCard 
+                                    image='image'
+                                    name={item.name}
+                                    quantity={item.quantity}
+                                    onClick={() => selectSeed(item._id)}
+                                    selectedSeed={selectedSeed}
+                                    seedId={item._id}
+                                />
+                            )
+                        }}
+                        numColumns={3}
+                    />
                 </View>
                 <Button 
                     title="Plant" 
@@ -52,8 +59,8 @@ const CreatePlantScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     cardItemStyle: {
-        flexDirection: 'row',
-        justifyContent: 'space-around'
+        alignItems: 'center',
+        justifyContent: 'space-around',
     }
 })
 
