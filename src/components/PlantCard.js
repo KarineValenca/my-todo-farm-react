@@ -4,18 +4,28 @@ import { StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo'
 import useWaterPlant from '../hooks/useWaterPlants'
 
-const PlantCard = ({ initialPlant, seed, image }) => {
+const selectPlantImage = (plant) => {
+    console.log('AAAAA')
+    console.log(plant.seedName)
+    console.log(plant.age)
+    console.log('AAAAA')
+    return '../assets/images/rice1.png'
+}
+
+const calculateAge = (plantDate) => {
+    const oneDay = 24*60*60*1000
+    const birthDate = new Date(plantDate)
+    return Math.round(Math.abs((Date.now() - birthDate) / oneDay))
+}
+
+const PlantCard = ({ initialPlant, seed }) => {
     const [waterPlant, plant] = useWaterPlant(initialPlant)
 
     useEffect(() => {
         
     }, [plant.status])
 
-    const calculateAge = (plantDate) => {
-        const oneDay = 24*60*60*1000
-        const birthDate = new Date(plantDate)
-        return Math.round(Math.abs((Date.now() - birthDate) / oneDay))
-    }
+    
 
     const age = calculateAge(plant.age)
 
@@ -35,11 +45,13 @@ const PlantCard = ({ initialPlant, seed, image }) => {
         />
     }
 
+    const image = selectPlantImage(plant)
+    console.log(image)
     return(
         <Card containerStyle={ styles.cardStyle }>
             <Text style={{textAlign: 'center', fontSize: 18}}>{seed}</Text>
             <Image
-                source={{ uri: image }}
+                source={{ uri: '..assets/images/rice1.png' }}
                 style={{ width: 70, height: 70, alignSelf: 'center' }}
             />
             

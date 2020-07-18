@@ -13,7 +13,6 @@ const PlantSection = ({ navigation, plants }) => {
                 renderItem={({ item }) => {
                     return(
                         <PlantCard 
-                            image='image'
                             seed={item.seedName}
                             initialPlant={item}
                         />

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { StyleSheet, ScrollView, FlatList } from 'react-native'
+import { StyleSheet, FlatList, ScrollView } from 'react-native'
 import { Card } from 'react-native-elements'
 import SeedCard from '../components/SeedCard'
 import useSeeds from '../hooks/useSeeds'
@@ -21,7 +21,7 @@ const FarmScreen = ({ navigation }) => {
             <CustomHeader 
                 title={"My Farm"}
             />
-        
+            
             <Card containerStyle={{ borderRadius: 5 }} title="Seeds" titleStyle={{ fontSize: 22 }}>
                 <FlatList 
                     contentContainerStyle={ styles.cardItemStyle2 }
@@ -40,7 +40,7 @@ const FarmScreen = ({ navigation }) => {
                     numColumns={3}
                 />
             </Card>
-
+        
             <PlantSection navigation={navigation} plants={plants}/>
         </ScrollView>
     )
