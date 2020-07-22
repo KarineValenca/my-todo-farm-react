@@ -3,13 +3,29 @@ import { Card, Text, Image, Button } from 'react-native-elements'
 import { StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo'
 import useWaterPlant from '../hooks/useWaterPlants'
+import SeedImages from '../assets/images/SeedImages'
 
 const selectPlantImage = (plant) => {
-    console.log('AAAAA')
-    console.log(plant.seedName)
-    console.log(plant.age)
-    console.log('AAAAA')
-    return '../assets/images/rice1.png'
+    const plantName = plant.seedName.toLowerCase()
+    const plantAge = calculateAge(plant.age)
+    console.log('Plant age', plantAge)
+    console.log(typeof(SeedImages))
+    //TODO: REFACTOR THIS
+    SeedImages.forEach(element => {
+        console.log(element.image.sproot)
+    });
+    if (plantAge <= 2){
+        let transformString = `../assets/images/${plantName}1.png`
+        console.log(transformString)
+        return require('../assets/images/rice1.png')
+    }
+    if (plantAge <= 4) {
+        let transformString = `../assets/images/${plantName}1.png`
+        return require('../assets/images/rice2.png')
+    }
+    if (plantAge > 4) {
+        return require('../assets/images/rice3.png')
+    }
 }
 
 const calculateAge = (plantDate) => {
@@ -46,12 +62,11 @@ const PlantCard = ({ initialPlant, seed }) => {
     }
 
     const image = selectPlantImage(plant)
-    console.log(image)
     return(
         <Card containerStyle={ styles.cardStyle }>
             <Text style={{textAlign: 'center', fontSize: 18}}>{seed}</Text>
             <Image
-                source={{ uri: '..assets/images/rice1.png' }}
+                source={ image }
                 style={{ width: 70, height: 70, alignSelf: 'center' }}
             />
             
