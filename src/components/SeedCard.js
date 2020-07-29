@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { Card, Text, Image } from 'react-native-elements'
 import { StyleSheet, TouchableOpacity } from 'react-native'
+import SeedImages from '../assets/images/SeedImages'
 
-const SeedCard = ({ image, name, quantity, onClick, selectedSeed, seedId, activeOpacity}) => {
+const selectSeedImage = (seed) => {
+    // just a paliative solution while i dont fix the undefined seeds
+    if (seed == undefined) seed = ''
+    const seedName = seed.toLowerCase()
+    const image = SeedImages(seedName)
+    console.log(image.sproot)
+    return image.sproot
+}
+
+const SeedCard = ({ name, quantity, onClick, selectedSeed, seedId, activeOpacity}) => {
     const [cardDefaulStyle, setCardDefaultStyle] = useState(styles.cardStyle)
 
     useEffect(() => {
@@ -13,12 +23,14 @@ const SeedCard = ({ image, name, quantity, onClick, selectedSeed, seedId, active
         }
     }, [selectedSeed])
 
+    const image = selectSeedImage(name)
+
     return(
         <TouchableOpacity onPress={onClick} activeOpacity={activeOpacity}>
         <Card containerStyle={ cardDefaulStyle }>
             <Text style={{textAlign: 'center', fontSize: 18}}>{name}</Text>
             <Image
-                source={{ uri: image }}
+                source={ image }
                 style={{ width: 70, height: 70 }}
             />
             

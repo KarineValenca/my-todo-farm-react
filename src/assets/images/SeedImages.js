@@ -22,7 +22,10 @@ const SeedsImages = (seed) => {
                 }
             return image
         default:
-            break;
+            image = {
+                sproot: require('./rose1.png')
+            }
+            return image
     }
 }
 
