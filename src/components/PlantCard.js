@@ -8,23 +8,15 @@ import SeedImages from '../assets/images/SeedImages'
 const selectPlantImage = (plant) => {
     const plantName = plant.seedName.toLowerCase()
     const plantAge = calculateAge(plant.age)
-    console.log('Plant age', plantAge)
-    console.log(typeof(SeedImages))
-    //TODO: REFACTOR THIS
-    SeedImages.forEach(element => {
-        console.log(element.image.sproot)
-    });
+    
     if (plantAge <= 2){
-        let transformString = `../assets/images/${plantName}1.png`
-        console.log(transformString)
-        return require('../assets/images/rice1.png')
+        return SeedImages.rice.image.sproot
     }
     if (plantAge <= 4) {
-        let transformString = `../assets/images/${plantName}1.png`
-        return require('../assets/images/rice2.png')
+        return SeedImages.rice.image.young
     }
     if (plantAge > 4) {
-        return require('../assets/images/rice3.png')
+        return SeedImages.rice.image.madure
     }
 }
 
