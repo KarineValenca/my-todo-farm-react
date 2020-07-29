@@ -8,15 +8,16 @@ import SeedImages from '../assets/images/SeedImages'
 const selectPlantImage = (plant) => {
     const plantName = plant.seedName.toLowerCase()
     const plantAge = calculateAge(plant.age)
+    let image = SeedImages(plantName)
     
     if (plantAge <= 2){
-        return SeedImages.rice.image.sproot
+        return image.sproot
     }
     if (plantAge <= 4) {
-        return SeedImages.rice.image.young
+        return image.young
     }
     if (plantAge > 4) {
-        return SeedImages.rice.image.madure
+        return image.madure
     }
 }
 
