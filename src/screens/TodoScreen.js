@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { View, FlatList } from 'react-native'
 import ListTodoItem from '../components/ListTodoItem'
+import ColapseSection from '../components/ColapseSection'
 import { Context as TodoContext } from '../context/TodoContext'
 import { Context as AuthContext } from '../context/AuthContext'
 import CustomHeader from '../components/CustomHeader'
@@ -29,24 +30,42 @@ const TodoScreen = ({ navigation }) => {
     
     return(
         <View style={{ flex: 1 }}>
-            
             <CustomHeader 
                 title={"My To-Do List"} 
                 rightIcon={"plus"} 
                 rightOnClick={() => navigation.navigate('TodoCreate')}
             />
             {isToastVisible ? showToast() : null }
-            <FlatList 
-                data={todos}
-                renderItem={ ({item}) => {
-                    return(
-                        <ListTodoItem 
-                            todo={item} 
-                        />
-                    ) 
-                }}
-                keyExtractor={todo => todo._id}
-            />
+            <ColapseSection title={"TO-DO"}>
+                <FlatList 
+                    data={todos}
+                    renderItem={ ({item}) => {
+                        if (item.isDone == false) {
+                            return(
+                                <ListTodoItem 
+                                    todo={item} 
+                                />
+                            )
+                        }
+                    }}
+                    keyExtractor={todo => todo._id}
+                />
+            </ColapseSection>
+            <ColapseSection title={"DONE"}>
+                <FlatList 
+                    data={todos}
+                    renderItem={ ({item}) => {
+                        if (item.isDone == true) {
+                            return(
+                                <ListTodoItem 
+                                    todo={item} 
+                                />
+                            )
+                        }
+                    }}
+                    keyExtractor={todo => todo._id}
+                />
+            </ColapseSection>
         </View>
     )
 }
