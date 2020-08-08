@@ -1,13 +1,18 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Text, Input, Button } from 'react-native-elements'
 import { Context } from '../context/AuthContext'
 import { navigate } from '../navigateRef'
 
 const LoginScreen = () => {
-    const { state, signin } = useContext(Context)
+    const { state, signin, tryLocalSignin } = useContext(Context)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    useEffect(() => {
+        tryLocalSignin()
+    }, [])
+    
     return(
         <View>
             <Text h2 style={styles.textStyle}>Log In</Text>
