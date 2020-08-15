@@ -1,4 +1,4 @@
-import { NavigationActions } from 'react-navigation'
+import { NavigationActions, StackActions } from 'react-navigation'
 let navigator
 
 export const setNavigator = (nav) => {
@@ -6,11 +6,14 @@ export const setNavigator = (nav) => {
 }
 
 export const navigate = (routeName, params) => {
-    //console.log(params)
     navigator.dispatch(
         NavigationActions.navigate({
             routeName,
             params
         })
     )
+}
+
+export const clearNav = async () => {
+    await navigator.dispatch(StackActions.popToTop())
 }

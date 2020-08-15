@@ -9,9 +9,7 @@ import CustomToast from '../components/CustomToast'
 
 const TodoScreen = ({ navigation }) => {
     const { state } = useContext(AuthContext)
-    const userId = state.user._id
     const [isToastVisible, setIsToastVisible] = useState(false)
-
     const { state: { todos, todo }, showTodos } = useContext(TodoContext)
 
     const showToast = () => {
@@ -21,7 +19,7 @@ const TodoScreen = ({ navigation }) => {
     }
 
     useEffect(() => {
-        showTodos(userId)
+        showTodos(state.user._id)
         if(todo != undefined && todo.isDone === true) {
             setIsToastVisible(true)
         }

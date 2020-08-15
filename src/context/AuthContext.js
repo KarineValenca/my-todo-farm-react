@@ -1,6 +1,6 @@
 import createDataContext from './createDataContext'
 import api from '../api/api'
-import { navigate } from '../navigateRef'
+import { navigate, clearNav } from '../navigateRef'
 import { AsyncStorage } from 'react-native'
 
 const authReducer = (state, action) => {
@@ -31,7 +31,6 @@ const tryLocalSignin = dispatch => async() => {
             dispatch({ type: 'signin', payload: payload })
             navigate('Todo')
         }else{
-            console.log("dispatcing to login")
             navigate('Login')
         }
     }catch(err){
@@ -70,11 +69,10 @@ const signup = (dispatch) => async({ email, username, password}) => {
 }
 
 const logout = (dispatch) => async() => {
-    await AsyncStorage.removeItem('token')
-    await AsyncStorage.removeItem('user')
-    console.log("LOGOUT")
-    await dispatch({ type: 'logout' })
+    dispatch({ type: 'logout' })
     navigate('Login')
+    await clearNav()
+    await AsyncStorage.clear()
 }
 
 export const { Provider, Context } = createDataContext(

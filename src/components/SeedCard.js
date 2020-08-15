@@ -8,7 +8,6 @@ const selectSeedImage = (seed) => {
     if (seed == undefined) seed = ''
     const seedName = seed.toLowerCase()
     const image = SeedImages(seedName)
-    console.log(image.sproot)
     return image.sproot
 }
 
