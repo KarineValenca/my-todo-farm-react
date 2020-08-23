@@ -33,7 +33,7 @@ const LoginScreen = () => {
             />
             {state.errorMessage ? <Text style={styles.errorMessage}>{state.errorMessage}</Text> : null }
             <Button title="Log in" onPress={() => signin({ email, password })} buttonStyle={styles.loginButtonStyle}/>
-            <Button title="SignUp" titleStyle={{ color: '#5458CC'}} buttonStyle={ styles.signupButtonStyle } type="outline" onPress={() => navigate('SignUp')} />
+            <Button title="Sign Up" titleStyle={{ color: '#5458CC'}} buttonStyle={ styles.signupButtonStyle } type="outline" onPress={() => navigate('SignUp')} />
         </View>
     )
 }
