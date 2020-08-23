@@ -55,10 +55,10 @@ const signin = (dispatch) => async({ email, password }) => {
 
 const signup = (dispatch) => async({ email, username, password}) => {
     try{
-        const responde = await api.post('/signup', { email, password, username })
-        dispatch({ type: 'signup', payload: responde.data })
+        const response = await api.post('/signup', { email, password, username })
+        dispatch({ type: 'signup', payload: response.data })
         await AsyncStorage.setItem('token', response.data.token)
-        await AsyncStorage.setItem('user', response.data.user)
+        await AsyncStorage.setItem('user', JSON.stringify(response.data.user))
         navigate('Todo')
     }catch(err) {
         dispatch({

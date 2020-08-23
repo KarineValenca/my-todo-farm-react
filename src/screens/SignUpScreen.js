@@ -11,7 +11,7 @@ const SignUpScreen = () => {
     const [password, setPassword] = useState('')
 
     const {state, signup} = useContext(AuthContext)
-    console.log(email)
+    
     return (
         <View>
         <CustomHeader 
