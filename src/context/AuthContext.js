@@ -13,6 +13,8 @@ const authReducer = (state, action) => {
             return { errorMessage: '', token: null, user: null }
         case 'add_error':
             return { ...state, errorMessage: action.payload }
+        case 'clear_error_message':
+            return { ...state, errorMessage: '' }
         default:
             return state
     }
@@ -37,6 +39,12 @@ const tryLocalSignin = dispatch => async() => {
         console.log(err)
     }
 }
+
+const clearErrorMessage = dispatch => () => {
+    console.log("cleaning error message")
+    dispatch({ type: 'clear_error_message' })
+}
+
 const signin = (dispatch) => async({ email, password }) => {
     try {
         const response = await api.post('/signin', { email, password })
@@ -77,6 +85,6 @@ const logout = (dispatch) => async() => {
 
 export const { Provider, Context } = createDataContext(
     authReducer,
-    { signin, signup, logout, tryLocalSignin },
+    { signin, signup, logout, tryLocalSignin, clearErrorMessage },
     { token: null, user: null, errorMessage: ''}
 )

@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { NavigationEvents } from 'react-navigation'
 import { View, StyleSheet } from 'react-native'
 import { Input, Text, Button } from 'react-native-elements'
 import CustomHeader from '../components/CustomHeader'
@@ -10,10 +11,11 @@ const SignUpScreen = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    const {state, signup} = useContext(AuthContext)
+    const {state, signup, clearErrorMessage} = useContext(AuthContext)
     
     return (
         <View>
+            <NavigationEvents onWillFocus={clearErrorMessage} />
         <CustomHeader 
                 title={"Sign Up"} 
                 leftIcon={"arrow-left"} 

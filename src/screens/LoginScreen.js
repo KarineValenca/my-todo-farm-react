@@ -1,11 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react'
+import { NavigationEvents } from 'react-navigation'
 import { View, StyleSheet } from 'react-native'
 import { Text, Input, Button } from 'react-native-elements'
 import { Context } from '../context/AuthContext'
 import { navigate } from '../navigateRef'
 
 const LoginScreen = () => {
-    const { state, signin, tryLocalSignin } = useContext(Context)
+    const { state, signin, tryLocalSignin, clearErrorMessage } = useContext(Context)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -15,6 +16,7 @@ const LoginScreen = () => {
     
     return(
         <View>
+            <NavigationEvents onWillFocus={clearErrorMessage} />
             <Text h2 style={styles.textStyle}>Log In</Text>
             <Input 
                 label="Email"

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'https://todo-farm.herokuapp.com'
+    baseURL: 'http://59bc97605e3a.ngrok.io'
 })
 
 export default instance
