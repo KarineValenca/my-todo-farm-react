@@ -13,6 +13,7 @@ const FarmScreen = ({ navigation }) => {
     const [showUserPlants, plants] = useShowPlants()
 
     useEffect(() => {
+        showUserSeeds()
         showUserPlants()
     }, [])
 
