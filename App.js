@@ -8,7 +8,6 @@ import SignUpScreen from './src/screens/SignUpScreen'
 import TodoScreen from './src/screens/TodoScreen'
 import TodoCreateScreen from './src/screens/CreateTodoScreen'
 import FarmScreen from './src/screens/FarmScreen'
-import PlantCreateScreen from './src/screens/CreatePlantScreen'
 import SideMenu from'./src/navigation/SideMenu'
 import { Provider as AuthProvider } from './src/context/AuthContext'
 import { Provider as TodoProvider } from './src/context/TodoContext'
@@ -30,7 +29,6 @@ todoFlow.navigationOptions = {
 
 const farmFlow = createSwitchNavigator({
   Farm: FarmScreen,
-  PlantCreate: PlantCreateScreen
 })
 farmFlow.navigationOptions = {
   title: 'My Farm',

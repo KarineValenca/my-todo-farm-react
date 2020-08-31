@@ -20,11 +20,6 @@ const PlantSection = ({ navigation, plants }) => {
                 }}
                 numColumns={3}
             />
-            <Button 
-                title="Plant!"
-                onPress={() => navigation.navigate('PlantCreate')}
-                buttonStyle={{ marginTop: 10, backgroundColor: '#5458CC' }}
-            />
         </Card>
     )
 }

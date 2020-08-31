@@ -5,7 +5,7 @@ import SeedCard from '../components/SeedCard'
 import useSeeds from '../hooks/useSeeds'
 import useShowPlants from '../hooks/useShowPlants'
 import CustomHeader from '../components/CustomHeader'
-import PlantSection from '../components/PlantSection'
+import PlantSection from './PlantSection'
 import usePlantSeed from '../hooks/usePlantSeed'
 
 const FarmScreen = ({ navigation }) => {
