@@ -13,6 +13,7 @@ const FarmScreen = ({ navigation }) => {
     const [showUserPlants, plants] = useShowPlants()
     const [plantSeed, plant] = usePlantSeed()
     const [selectedSeed, setSelectedSeed] = useState('')
+    const [seedQtd, setSeedQtd] = useState(0)
 
     useEffect(() => {
         showUserSeeds()
@@ -48,7 +49,10 @@ const FarmScreen = ({ navigation }) => {
                                 image='image'
                                 name={item.name}
                                 quantity={item.quantity}
-                                onClick={() => setSelectedSeed(item._id)}
+                                onClick={() => {
+                                    setSelectedSeed(item._id)
+                                    setSeedQtd(item.quantity)
+                                }}
                                 selectedSeed={selectedSeed}
                                 seedId={item._id}
                             />
@@ -56,8 +60,9 @@ const FarmScreen = ({ navigation }) => {
                     }}
                     numColumns={3}
                 />
+                {selectedSeed && seedQtd > 0 ? plantButton : null }
             </Card>
-            {selectedSeed ? plantButton : null }
+            
             <PlantSection navigation={navigation} plants={plants}/>
         </ScrollView>
     )
