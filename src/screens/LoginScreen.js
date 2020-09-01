@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { NavigationEvents } from 'react-navigation'
 import { View, StyleSheet } from 'react-native'
+import Spacer from '../components/Spacer'
 import { Text, Input, Button } from 'react-native-elements'
 import { Context } from '../context/AuthContext'
 import { navigate } from '../navigateRef'
@@ -34,8 +35,19 @@ const LoginScreen = () => {
                 autoCorrect={false}
             />
             {state.errorMessage ? <Text style={styles.errorMessage}>{state.errorMessage}</Text> : null }
-            <Button title="Log in" onPress={() => signin({ email, password })} buttonStyle={styles.loginButtonStyle}/>
-            <Button title="Sign Up" titleStyle={{ color: '#5458CC'}} buttonStyle={ styles.signupButtonStyle } type="outline" onPress={() => navigate('SignUp')} />
+            <Spacer>
+                <Button 
+                    title="Log in" 
+                    onPress={() => signin({ email, password })} 
+                    buttonStyle={styles.loginButtonStyle}/>
+            
+                <Button 
+                    title="Sign Up" 
+                    titleStyle={{ color: '#5458CC'}} 
+                    buttonStyle={ styles.signupButtonStyle } 
+                    type="outline" 
+                    onPress={() => navigate('SignUp')} />
+            </Spacer>
         </View>
     )
 }

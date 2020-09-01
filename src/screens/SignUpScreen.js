@@ -3,6 +3,7 @@ import { NavigationEvents } from 'react-navigation'
 import { View, StyleSheet } from 'react-native'
 import { Input, Text, Button } from 'react-native-elements'
 import CustomHeader from '../components/CustomHeader'
+import Spacer from '../components/Spacer'
 import { navigate } from '../navigateRef'
 import { Context as AuthContext } from '../context/AuthContext'
 
@@ -47,7 +48,9 @@ const SignUpScreen = () => {
             autoCorrect={false}
         />
         {state.errorMessage ? <Text style={styles.errorMessage}>{state.errorMessage}</Text> : null }
-        <Button title="Sign Up" onPress={() => signup({ email, username, password })} buttonStyle={styles.buttonStyle}/>
+        <Spacer>
+            <Button title="Sign Up" onPress={() => signup({ email, username, password })} buttonStyle={styles.buttonStyle}/>
+        </Spacer>
         </View>
     )
 }

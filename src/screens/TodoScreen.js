@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { View, FlatList } from 'react-native'
 import ListTodoItem from '../components/ListTodoItem'
 import ColapseSection from '../components/ColapseSection'
+import Spacer from '../components/Spacer'
 import { Context as TodoContext } from '../context/TodoContext'
 import { Context as AuthContext } from '../context/AuthContext'
 import CustomHeader from '../components/CustomHeader'
@@ -49,6 +50,7 @@ const TodoScreen = ({ navigation }) => {
                     keyExtractor={todo => todo._id}
                 />
             </ColapseSection>
+            <Spacer />
             <ColapseSection title={"DONE"}>
                 <FlatList 
                     data={todos}

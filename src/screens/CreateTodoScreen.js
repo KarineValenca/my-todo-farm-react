@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Input, Text, Button, ButtonGroup } from 'react-native-elements'
 import CustomHeader from '../components/CustomHeader'
+import Spacer from '../components/Spacer'
 import { Context as TodoContext} from '../context/TodoContext'
 import { Context as AuthContext } from '../context/AuthContext'
 
@@ -45,7 +46,6 @@ const CreateTodoScreen = ({ navigation }) => {
                 leftIcon={"arrow-left"} 
                 leftOnClick={() => navigation.navigate('Todo')}
             />
-           
             <Input 
                 label="Title"
                 placeholder="To-Do Title"
@@ -62,12 +62,13 @@ const CreateTodoScreen = ({ navigation }) => {
                 
             />
             { errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null }
-            <Button 
-                title="CREATE"
-                onPress={ () => createTodo(userId ,title, category)}
-                buttonStyle={{ backgroundColor: '#5458CC'}}
-            />
-
+            <Spacer>
+                <Button 
+                    title="CREATE"
+                    onPress={ () => createTodo(userId ,title, category)}
+                    buttonStyle={{ backgroundColor: '#5458CC'}}
+                />
+            </Spacer>
         </View>
     )
 }
