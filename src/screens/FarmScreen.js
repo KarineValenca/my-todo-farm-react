@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, FlatList, ScrollView } from 'react-native'
-import { Card, Button } from 'react-native-elements'
+import { Card, Button, Text } from 'react-native-elements'
 import SeedCard from '../components/SeedCard'
 import useSeeds from '../hooks/useSeeds'
 import useShowPlants from '../hooks/useShowPlants'
 import CustomHeader from '../components/CustomHeader'
 import PlantSection from './PlantSection'
 import usePlantSeed from '../hooks/usePlantSeed'
+import { color } from 'react-native-reanimated'
 
 const FarmScreen = ({ navigation }) => {
     const [showUserSeeds, seeds] = useSeeds()
@@ -16,6 +17,7 @@ const FarmScreen = ({ navigation }) => {
     const [seedQtd, setSeedQtd] = useState(0)
 
     useEffect(() => {
+        console.log(seeds.length)
         showUserSeeds()
         showUserPlants()
     }, [selectedSeed])
@@ -31,6 +33,35 @@ const FarmScreen = ({ navigation }) => {
             }}
             disabled={selectedSeed == ''}
         />
+
+
+    const emptySeedsMessage = 
+        <Text style={{ alignSelf: 'center' }}>
+            Finish a task to win a seed and start your farm!
+        </Text>
+
+    const seedList = 
+        <FlatList 
+            contentContainerStyle={ styles.cardItemStyle2 }
+            data={seeds}
+            keyExtractor={(seed) => seed._id}
+            renderItem={({ item }) => {
+                return(
+                    <SeedCard 
+                        image='image'
+                        name={item.name}
+                        quantity={item.quantity}
+                        onClick={() => {
+                            setSelectedSeed(item._id)
+                            setSeedQtd(item.quantity)
+                        }}
+                        selectedSeed={selectedSeed}
+                        seedId={item._id}
+                    />
+                )
+            }}
+            numColumns={3}
+        />
            
     return(
         <ScrollView style={{ flex: 1 }}>
@@ -39,27 +70,7 @@ const FarmScreen = ({ navigation }) => {
             />
             
             <Card containerStyle={{ borderRadius: 5 }} title="Seeds" titleStyle={{ fontSize: 22 }}>
-                <FlatList 
-                    contentContainerStyle={ styles.cardItemStyle2 }
-                    data={seeds}
-                    keyExtractor={(seed) => seed._id}
-                    renderItem={({ item }) => {
-                        return(
-                            <SeedCard 
-                                image='image'
-                                name={item.name}
-                                quantity={item.quantity}
-                                onClick={() => {
-                                    setSelectedSeed(item._id)
-                                    setSeedQtd(item.quantity)
-                                }}
-                                selectedSeed={selectedSeed}
-                                seedId={item._id}
-                            />
-                        )
-                    }}
-                    numColumns={3}
-                />
+                {seeds.length > 0 ? seedList : emptySeedsMessage }
                 {selectedSeed && seedQtd > 0 ? plantButton : null }
             </Card>
             
